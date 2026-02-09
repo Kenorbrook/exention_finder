@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Exention Finder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Monitors a target page for keywords, highlights matches, and plays a sound alert.",
   "action": {
     "default_title": "Exention Finder",
