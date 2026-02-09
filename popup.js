@@ -7,6 +7,8 @@ const exportButton = document.getElementById("export-words");
 const targetUrlInput = document.getElementById("target-url");
 const useCurrentButton = document.getElementById("use-current");
 
+const highlightColorInput = document.getElementById("highlight-color");
+
 const setStatus = (message) => {
   status.textContent = message;
   if (message) {
@@ -17,10 +19,12 @@ const setStatus = (message) => {
 };
 
 const loadState = async () => {
-  const data = await chrome.storage.local.get(["words", "targetUrl"]);
+
+  const data = await chrome.storage.local.get(["words", "targetUrl", "highlightColor"]);
   const words = Array.isArray(data.words) ? data.words : [];
   renderWords(words);
   targetUrlInput.value = data.targetUrl || "";
+  highlightColorInput.value = data.highlightColor || "#ffeb3b";
 };
 
 const saveWords = async (words) => {
@@ -144,5 +148,9 @@ targetUrlInput.addEventListener("change", async () => {
   await chrome.storage.local.set({ targetUrl: value });
   setStatus("URL сохранен");
 });
-
+highlightColorInput.addEventListener("change", async () => {
+  const value = highlightColorInput.value;
+  await chrome.storage.local.set({ highlightColor: value });
+  setStatus("Цвет подсветки сохранен");
+});
 loadState();

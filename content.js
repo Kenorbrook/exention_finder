@@ -133,6 +133,12 @@ const runScan = async () => {
   const pattern = words.map(escapeRegExp).join("|");
   const regex = new RegExp(pattern, "gi");
 
+
+  const { highlightColor } = await chrome.storage.local.get(["highlightColor"]);
+  if (highlightColor && document.documentElement) {
+    document.documentElement.style.setProperty("--exention-highlight-color", highlightColor);
+  }
+
   const found = highlightMatches(regex);
   if (found) {
     playNotification();
@@ -166,7 +172,7 @@ const init = () => {
     style.id = STYLE_ID;
     style.textContent = `
       .${HIGHLIGHT_CLASS} {
-        background: #ffeb3b;
+        background: var(--exention-highlight-color, #ffeb3b);
         color: #000;
         padding: 0 2px;
         border-radius: 2px;

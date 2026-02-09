@@ -30,10 +30,22 @@
 
       <section class="panel">
         <h2>Импорт / экспорт</h2>
-        <div class="row">
-          <input id="import-file" type="file" accept=".json,.txt" />
-          <button id="export-words">Экспорт</button>
+        <div class="stack">
+          <div class="row">
+            <input id="import-file" type="file" accept=".json,.txt" />
+          </div>
+          <div class="row">
+            <button id="export-words">Экспорт</button>
+          </div>
         </div>
+      </section>
+
+      <section class="panel">
+        <h2>Подсветка</h2>
+        <label class="field">
+          <span>Цвет фона</span>
+          <input id="highlight-color" type="color" />
+        </label>
       </section>
 
       <p id="status" class="status"></p>
