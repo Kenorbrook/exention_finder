@@ -3,10 +3,10 @@ const addWordButton = document.getElementById("add-word");
 const wordList = document.getElementById("word-list");
 const status = document.getElementById("status");
 const importFile = document.getElementById("import-file");
+const importButton = document.getElementById("import-words");
 const exportButton = document.getElementById("export-words");
 const targetUrlInput = document.getElementById("target-url");
 const useCurrentButton = document.getElementById("use-current");
-
 const highlightColorInput = document.getElementById("highlight-color");
 
 const setStatus = (message) => {
@@ -19,7 +19,6 @@ const setStatus = (message) => {
 };
 
 const loadState = async () => {
-
   const data = await chrome.storage.local.get(["words", "targetUrl", "highlightColor"]);
   const words = Array.isArray(data.words) ? data.words : [];
   renderWords(words);
@@ -115,6 +114,10 @@ importFile.addEventListener("change", async (event) => {
   importFile.value = "";
 });
 
+importButton.addEventListener("click", () => {
+  importFile.click();
+});
+
 exportButton.addEventListener("click", async () => {
   const data = await chrome.storage.local.get(["words"]);
   const words = Array.isArray(data.words) ? data.words : [];
@@ -148,9 +151,11 @@ targetUrlInput.addEventListener("change", async () => {
   await chrome.storage.local.set({ targetUrl: value });
   setStatus("URL сохранен");
 });
+
 highlightColorInput.addEventListener("change", async () => {
   const value = highlightColorInput.value;
   await chrome.storage.local.set({ highlightColor: value });
   setStatus("Цвет подсветки сохранен");
 });
+
 loadState();

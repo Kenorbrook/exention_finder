@@ -133,7 +133,6 @@ const runScan = async () => {
   const pattern = words.map(escapeRegExp).join("|");
   const regex = new RegExp(pattern, "gi");
 
-
   const { highlightColor } = await chrome.storage.local.get(["highlightColor"]);
   if (highlightColor && document.documentElement) {
     document.documentElement.style.setProperty("--exention-highlight-color", highlightColor);
