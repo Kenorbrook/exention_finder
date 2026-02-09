@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exention Finder</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Exention Finder</h1>
+
+      <section class="panel">
+        <h2>Страница мониторинга</h2>
+        <label class="field">
+          <span>URL содержит</span>
+          <input id="target-url" type="text" placeholder="например, example.com/page" />
+        </label>
+        <button id="use-current">Использовать текущую вкладку</button>
+      </section>
+
+      <section class="panel">
+        <h2>Список слов</h2>
+        <div class="row">
+          <input id="word-input" type="text" placeholder="Добавить слово" />
+          <button id="add-word">Добавить</button>
+        </div>
+        <ul id="word-list" class="word-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Импорт / экспорт</h2>
+        <div class="stack">
+          <div class="row">
+            <input id="import-file" type="file" accept=".json,.txt" />
+          </div>
+          <div class="row">
+            <button id="export-words">Экспорт</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Подсветка</h2>
+        <label class="field">
+          <span>Цвет фона</span>
+          <input id="highlight-color" type="color" />
+        </label>
+      </section>
+
+      <p id="status" class="status"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
