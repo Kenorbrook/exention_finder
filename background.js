@@ -1,4 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
+
   chrome.storage.local.get(["words", "targetUrl", "highlightColor"], (data) => {
     const next = {};
     if (!Array.isArray(data.words)) {
@@ -7,6 +8,7 @@ chrome.runtime.onInstalled.addListener(() => {
     if (typeof data.targetUrl !== "string") {
       next.targetUrl = "";
     }
+
     if (typeof data.highlightColor !== "string") {
       next.highlightColor = "#ffeb3b";
     }

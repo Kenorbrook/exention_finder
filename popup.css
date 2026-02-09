@@ -40,12 +40,12 @@ h2 {
   gap: 8px;
 }
 
+
 .stack {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .field {
   display: flex;
   flex-direction: column;
@@ -58,7 +58,6 @@ input[type="text"] {
   border: 1px solid #d0d5dd;
   border-radius: 6px;
 }
-
 input[type="color"] {
   width: 100%;
   height: 32px;
